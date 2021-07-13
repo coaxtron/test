@@ -1,0 +1,19 @@
+.thank-u-sc {
+  padding: 20px;
+
+  .check {
+      font-size: 60px;
+      color: green;
+  }
+
+  .t-heading {
+      font-size: 20px;
+  }
+
+  @media screen and (max-width: 599px) {
+
+      p {
+          padding: 0 15px;
+      }
+  }
+}
