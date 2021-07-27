@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { UserService } from './service/user.service';
 
 
 @NgModule({
@@ -25,6 +26,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatButtonModule
 
+  ],
+  providers:[
+    UserService
   ]
 })
 export class HomeModule { }

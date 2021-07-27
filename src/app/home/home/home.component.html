@@ -4,34 +4,22 @@
 <section  fxLayoutAlign="center center">
   <mat-card fxLayout="column"  fxFlex="400px" fxFlex.xs="100%">
     <!-- Login Form -->
-    <form [formGroup]="emailFormControl" (ngSubmit)="save()">
+    <form [formGroup]="userFrom" (ngSubmit)="save()">
       <div class="example-container" fxLayout="column">
         <h2 style="font-weight: 100; text-align: center;">Please Login In</h2>
 
         <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
-          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
+          <mat-label>Name</mat-label>
+          <input type="text" matInput placeholder="Name" formControlName="name">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <input type="text" matInput placeholder="Password" formControlName="password">
-          <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error> -->
+          <mat-label>Job</mat-label>
+          <input type="text" matInput placeholder="Password" formControlName="job">
         </mat-form-field>
 
         <div fxLayoutAlign="center center">
-          <button  type="submit" mat-raised-button [disabled]="!emailFormControl.valid" color="accent">LOGIN</button>
+          <button  type="submit" mat-raised-button [disabled]="!userFrom.valid" color="accent">CREATE</button>
         </div>
       </div>
     </form>
@@ -39,3 +27,20 @@
   </mat-card>
   </section>
   <!-- Emd Login Page -->
+
+  <div class="container d-flex flex-wrap" >
+    <ng-container *ngFor="let user of users">
+      <mat-card class="d-flex m-2 flex-row justify-content-between">
+       <img src="{{user?.avatar}}" width="200" lazy="loading">
+       <div class="m-2 d-flex flex-column">
+        <span>First Name : {{user?.first_name}}</span>
+        <span>First Name : {{user?.last_name}}</span>
+         <span>Email : {{user?.email}}</span>
+         <div class="d-flex mt-3 justify-content-between">
+          <button  type="submit" mat-raised-button color="primary" (click)="edit(user?.id)">EDIT</button>
+          <button  type="submit" mat-raised-button color="accent" (click)="remove(user?.id)">DELETE</button>
+         </div>
+       </div>
+      </mat-card>
+    </ng-container>
+  </div>
