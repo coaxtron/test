@@ -1,0 +1,25 @@
+{
+  "user": [
+    {
+      "name": "Janetwwww",
+      "job": "UIddqwww",
+      "email": "tony@hola.com",
+      "avatar": "https://reqres.in/img/faces/7-image.jpg",
+      "id": 1
+    },
+    {
+      "name": "Vikash Kumar",
+      "job": "Angular Developer1",
+      "email": "Vikash.k@gmail.com",
+      "avatar": "https://scontent.fbbi4-1.fna.fbcdn.net/v/t1.6435-9/199592562_1310681996016036_4852316864484035656_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=x-XGm4tursUAX-_C_uV&_nc_ht=scontent.fbbi4-1.fna&oh=2b5a27324823dabb0d6cbc3ea07d746a&oe=61269C62",
+      "id": 2
+    },
+    {
+      "name": "Janet",
+      "job": "Weaver",
+      "email": "tony@hola.com",
+      "avatar": "https://reqres.in/img/faces/7-image.jpg",
+      "id": 4
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 export interface Users {
 name: string,
 job:string,
-id:number
+id:number,
+email:string,
+avatar: string
 }

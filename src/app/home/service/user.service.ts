@@ -9,33 +9,38 @@ import { Users } from '../typings/users';
 })
 export class UserService {
 
-   USERLIST = 'https://reqres.in/api'
+  USERLIST = 'http://localhost:3000';
+
 
   constructor(private http: HttpClient) { }
 
-  create(data:any): Observable<any> {
-    return this.http.post<Users>(this.USERLIST + '/users', data)
+  // Create api
+  create(data:Users): Observable<Users> {
+    return this.http.post<Users>(this.USERLIST + '/user', data)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  userList():Observable<any> {
-    return this.http.get<any>(this.USERLIST + '/users')
+  // User List api
+  userList():Observable<Users> {
+    return this.http.get<Users>(this.USERLIST + '/user')
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  delete(id:any): Observable<any> {
-    return this.http.delete<Users>(`${this.USERLIST}/users/${id}`)
+  // Delete api
+  delete(id:number): Observable<Users> {
+    return this.http.delete<Users>(`${this.USERLIST}/user/${id}`)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  update(id:any, data:any): Observable<Users> {
-    return this.http.put<Users>(`${this.USERLIST}/users/${id}`, data)
+  // Update api
+  update(id:number, data:Users): Observable<Users> {
+    return this.http.put<Users>(`${this.USERLIST}/user/${id}`, data)
     .pipe(
       catchError(this.errorHandler)
     )

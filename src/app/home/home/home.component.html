@@ -1,12 +1,15 @@
+<!-- Create New User -->
+<div class="d-flex justify-content-between header">
+  <span class="welcome d-flex align-self-center">Welcome!</span>
+  <button type="submit" mat-raised-button color="accent" (click)="logout()">LogOut</button>
+</div>
 
-
-<!-- Start Login Page -->
-<section  fxLayoutAlign="center center">
-  <mat-card fxLayout="column"  fxFlex="400px" fxFlex.xs="100%">
-    <!-- Login Form -->
-    <form [formGroup]="userFrom" (ngSubmit)="save()">
+<section fxLayoutAlign="center center">
+  <mat-card fxLayout="column" fxFlex="400px" fxFlex.xs="100%">
+    <!-- User Form -->
+    <form [formGroup]="userFrom">
       <div class="example-container" fxLayout="column">
-        <h2 style="font-weight: 100; text-align: center;">Please Login In</h2>
+        <h2 style="font-weight: 100; text-align: center;">Please User In</h2>
 
         <mat-form-field appearance="fill">
           <mat-label>Name</mat-label>
@@ -18,29 +21,48 @@
           <input type="text" matInput placeholder="Password" formControlName="job">
         </mat-form-field>
 
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Image Link</mat-label>
+          <input type="text" matInput formControlName="avatar" placeholder="Image Link">
+        </mat-form-field>
+
         <div fxLayoutAlign="center center">
-          <button  type="submit" mat-raised-button [disabled]="!userFrom.valid" color="accent">CREATE</button>
+          <button *ngIf="openForm" type="submit" mat-raised-button color="accent" (click)="createUser()">CREATE</button>
+          <ng-container *ngIf="!openForm">
+            <button type="submit" mat-raised-button color="accent" (click)="edit()">EDIT</button>
+          </ng-container>
+
+
         </div>
       </div>
     </form>
     <!-- Login Form -->
   </mat-card>
-  </section>
-  <!-- Emd Login Page -->
+</section>
+<!-- Create New User -->
 
-  <div class="container d-flex flex-wrap" >
-    <ng-container *ngFor="let user of users">
-      <mat-card class="d-flex m-2 flex-row justify-content-between">
-       <img src="{{user?.avatar}}" width="200" lazy="loading">
-       <div class="m-2 d-flex flex-column">
-        <span>First Name : {{user?.first_name}}</span>
-        <span>First Name : {{user?.last_name}}</span>
-         <span>Email : {{user?.email}}</span>
-         <div class="d-flex mt-3 justify-content-between">
-          <button  type="submit" mat-raised-button color="primary" (click)="edit(user?.id)">EDIT</button>
-          <button  type="submit" mat-raised-button color="accent" (click)="remove(user?.id)">DELETE</button>
-         </div>
-       </div>
-      </mat-card>
-    </ng-container>
-  </div>
+
+<!-- List of Users -->
+<div class="container d-flex flex-wrap">
+  <ng-container *ngFor="let user of users; let i = index">
+    <mat-card class="d-flex m-2 flex-row justify-content-between">
+      <img src="{{user?.avatar}}" width="200" lazy="loading">
+      <div class="m-2 d-flex flex-column">
+        <span>Name : {{user?.name}}</span>
+        <span>Job : {{user?.job}}</span>
+        <span>Email : {{user?.email}}</span>
+        <div class="d-flex mt-3 justify-content-between">
+          <button type="submit" mat-raised-button color="primary" (click)="openFormField(i)">EDIT</button>
+          <button type="submit" mat-raised-button color="accent" (click)="remove(i)">DELETE</button>
+        </div>
+      </div>
+    </mat-card>
+  </ng-container>
+</div>
+<!-- List of Users -->
+
